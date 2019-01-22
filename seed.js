@@ -39,7 +39,31 @@ db.sync({ force: true })
     const [gerry, ethan, anna] = gardeners;
     const [one, two, three] = plots;
 
-    console.log(Object.keys(veggies.__proto__));
+    //console.log(Object.keys(gerry.__proto__));
+
+    const promise1 = gerry.setPlot(one);
+    const promise2 = ethan.setPlot(two);
+    const promise3 = anna.setPlot(three);
+
+    const promise4 = one.setVegetables([carrots, beets]);
+    const promise5 = two.setVegetables([carrots, cucumbers]);
+    const promise6 = three.setVegetables([cucumbers]);
+
+    const promise7 = gerry.setFavorite_vegetable(beets);
+    const promise8 = ethan.setFavorite_vegetable(carrots);
+    const promise9 = anna.setFavorite_vegetable(cucumbers);
+
+    return Promise.all([
+      promise1,
+      promise2,
+      promise3,
+      promise4,
+      promise5,
+      promise6,
+      promise7,
+      promise8,
+      promise9,
+    ]);
   })
   .catch(err => {
     console.log(err);
